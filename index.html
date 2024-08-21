@@ -8,8 +8,18 @@
     <title>jogo</title>
 </head>
 <body>
-    <header id="header" class="centralize">X: 0 Y: 0</header>
-    <canvas id="canvas" width="2000" height="2000"></canvas>
+    <header id="header">
+        <div>
+            <h4 id="escrito">
+                X: 0 Y: 0
+            </h4>
+        </div>
+        <div>
+            <button id="aumenta" onclick="aumentar()">+</button>
+            <button id="diminui" onclick="diminuir()">-</button>
+        </div>
+    </header>
+    <canvas id="canvas" width="1900" height="890"></canvas>
     <script src="script.js"></script>
 </body>
 </html>
