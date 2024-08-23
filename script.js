@@ -6,7 +6,7 @@ const aumentaY = document.getElementById('aumentaY');
 const diminuiY = document.getElementById('diminuiY');
 const barrinha = document.getElementById('tamanho');
 
-const ctx = canvas.getContext('2d');
+const caneta = canvas.getContext('2d');
 
 let min = 0;
 let max = 255;
@@ -15,7 +15,6 @@ let r = Math.floor(Math.random() * (max - min) + min);
 let g = Math.floor(Math.random() * (max - min) + min);
 let b = Math.floor(Math.random() * (max - min) + min);
 
-console.log(`r: ${r} g: ${g} b: ${b}`);
 
 let nsei = 0;
 let nsei2 = 0;
@@ -24,6 +23,9 @@ let nsei3 = 0;
 let tamanho = 10;
 
 let desenho = false;
+let apagar = false;
+
+let cor;
 
 function ativar() {
     desenho = true;
@@ -31,6 +33,14 @@ function ativar() {
 
 function desativar() {
     desenho = false;
+}
+
+function borracha() {
+    apagar = true;
+}
+
+function pincel() {
+    apagar = false;
 }
 
 
@@ -44,6 +54,7 @@ document.body.addEventListener('mousemove', (event) => {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
+    cor = `rgb(${r}, ${g}, ${b})`;
     
     console.log(barrinha.value);
     if(desenho == true){
@@ -92,16 +103,18 @@ document.body.addEventListener('mousemove', (event) => {
             b = min;
         }
     
-        // Gera valores de cor RGB baseados na posição do mouse
-        // Você pode ajustar os valores 255 e 360 para obter diferentes resultados
-        // const r = Math.floor((x / canvas.width) * 255);
-        // const g = Math.floor((y / canvas.height) * 255);
-        // const b = Math.floor(((x + y) / (canvas.width + canvas.height)) * 255);
         // Define a cor do retângulo usando a cor RGB calculada
-        ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-        ctx.fillRect(x - (tamanho/2), y - (tamanho/2), tamanho, tamanho);
-        // ctx.fillRect(x - 10, y - 10, 10, 10000);
-    
+        if (apagar == false) {
+            caneta.fillStyle = cor;
+            // caneta.strokeStyle = cor;
+        }
+        else {
+            caneta.fillStyle = `black`;
+            // caneta.strokeStyle = `white`;
+        }
+
+        caneta.fillRect(x - (tamanho/2), y - (tamanho/2), tamanho, tamanho);
+        // caneta.strokeRect(x - (tamanho/2), y - (tamanho/2), tamanho, tamanho);
     }
     
     // Atualiza o texto do header com as coordenadas do mouse
@@ -111,33 +124,3 @@ document.body.addEventListener('mousemove', (event) => {
 function mudarTamanho(){
     tamanho = barrinha.value * 6;
 }
-
-// function aumentarX() {
-//     tamanhoX += 10;
-
-//     if (tamanhoX >= 650) {
-//         tamanhoX = 650;
-//     }
-// }
-
-// function diminuirX() {
-//     tamanhoX -= 10;
-//     if (tamanhoX <= 0) {
-//         tamanhoX = 2;
-//     }
-// }
-
-// function aumentarY() {
-//     tamanhoY += 10;
-
-//     if (tamanhoY >= 650) {
-//         tamanhoY = 650;
-//     }
-// }
-
-// function diminuirY() {
-//     tamanhoY -= 10;
-//     if (tamanhoY <= 0) {
-//         tamanhoY = 2;
-//     }
-// }
