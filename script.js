@@ -86,8 +86,8 @@ document.body.addEventListener('mousemove', (event) => {
 function aumentar() {
     tamanho += 10;
 
-    if (tamanho >= 250) {
-        tamanho = 250;
+    if (tamanho >= 650) {
+        tamanho = 650;
     }
 }
 
