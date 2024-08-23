@@ -12,8 +12,16 @@ canvas {
 
 button {
     max-width: 50%;
-    width: 60px;
-    margin-bottom: 5px;
+    width: 70px;
+    border-radius: 5.5px;
+    padding: 3px;
+    background-color: rgb(24, 94, 224);
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(21, 72, 167);
 }
 
 h4 {
@@ -26,6 +34,7 @@ header {
     justify-content: space-between;
     padding-left: 10px;
     padding-right: 10px;
+    margin-bottom: 12px;
 }
 
 .centralize {
@@ -33,3 +42,4 @@ header {
     justify-content: center;
     align-items: center;
 }
+
