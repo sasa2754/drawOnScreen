@@ -6,7 +6,6 @@ body {
 }
 
 canvas {
-    /* margin-top: 8px; */
     border: 1px solid black;
 }
 
@@ -43,3 +42,8 @@ header {
     align-items: center;
 }
 
+.space {
+    display: flex;
+    justify-content: space-around;
+    width: 350px;
+}
